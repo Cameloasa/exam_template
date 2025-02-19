@@ -15,7 +15,7 @@ class Grid:
 
 
     def get(self, x, y):
-        """Hämta det som finns på en viss position"""
+        """Hämta det som finns på en viss position use in player can_move"""
         return self.data[y][x]
 
     def set(self, x, y, value):

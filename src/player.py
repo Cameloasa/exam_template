@@ -14,7 +14,10 @@ class Player:
         self.pos_y += dy
 
     def can_move(self, x, y, grid):
+        """Kontrollerar om spelaren kan röra sig till positionen (x, y)."""
+        if grid.get(x, y) == grid.wall:
+            return False
         return True
-        #TODO: returnera True om det inte står något i vägen
+
 
 
