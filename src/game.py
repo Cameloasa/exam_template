@@ -1,6 +1,7 @@
 from .grid import Grid
 from .player import Player
 from . import pickups
+from src.score import print_status
 
 
 
@@ -14,12 +15,6 @@ g.make_walls()
 pickups.randomize(g)
 
 
-# TODO: flytta denna till en annan fil
-def print_status(game_grid):
-    """Visa spelvärlden och antal poäng."""
-    print("--------------------------------------")
-    print(f"You have {score} points.")
-    print(game_grid)
 
 
 command = "a"
