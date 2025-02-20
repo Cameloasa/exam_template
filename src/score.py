@@ -1,7 +1,18 @@
 
 
-def print_status(game_grid, score):
+def print_status(grid, score):
     """Visa spelvärlden och antal poäng."""
     print("--------------------------------------")
     print(f"You have {score} points.")
-    print(game_grid)
+    print(grid)
+
+def update_score(value, score):
+    """Uppdatera poängen och returnera nytt värde."""
+    score += value
+    print(f"Your score is now: {score}")
+
+    if score <= 0:
+        print("Game Over! You lost all your points.")
+        exit()
+
+    return score
