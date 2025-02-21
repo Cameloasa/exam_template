@@ -23,7 +23,7 @@ class Grid:
         self.data[y][x] = value
 
     def set_player(self, player):
-        self.player = player
+        self.player = player #player Instance attribute player defined outside __init__  we use that in game.py
 
     def clear(self, x, y):
         """Ta bort item från position"""
@@ -62,7 +62,6 @@ class Grid:
     def get_random_y(self):
         """Slumpa en y-position på spelplanen"""
         return random.randint(0, self.height-1)
-
 
     def is_empty(self, x, y):
         """Returnerar True om det inte finns något på aktuell ruta"""

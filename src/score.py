@@ -6,7 +6,7 @@ def print_status(grid, score):
     print(f"You have {score} points.")
     print(grid)
 
-def update_score(value, score):
+def update_score(value, score): #maybe_item_value
     """Uppdatera poängen och returnera nytt värde."""
     score += value
     print(f"Your score is now: {score}")
