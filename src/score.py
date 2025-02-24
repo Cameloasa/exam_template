@@ -1,18 +1,22 @@
 
 
-def print_status(grid, score):
-    """Visa spelvärlden och antal poäng."""
-    print("--------------------------------------")
-    print(f"You have {score} points.")
-    print(grid)
+class Score:
 
-def update_score(value, score): #maybe_item_value
-    """Uppdatera poängen och returnera nytt värde."""
-    score += value
-    print(f"Your score is now: {score}")
+    def __init__(self):
+        self.value = 0
 
-    if score <= 0:
-        print("Game Over! You lost all your points.")
-        exit()
+    def get_score(self):
+        return self.value
 
-    return score
+    def update_score(self, amount):
+        """Uppdatera poängen och returnera nytt värde."""
+        self.value += amount
+
+        if self.value <= 0:
+            print("Game Over! You lost all your points.")
+            exit()
+
+    def __str__(self):
+        """Visa spelvärlden och antal poäng."""
+        return self.value
+
