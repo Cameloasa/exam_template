@@ -29,6 +29,27 @@ def test_pickups_item_add_to_inventory_and_remove_from_grid():
     assert any(i.name == "apple" for i in inventory), "Item should be in inventory"
 
 
+def test_score_decrease_each_step():
+    #grid, player, set player och score
+    player = Player(2, 2)
+    grid = Grid()
+    grid.set_player(player)
+    score = Score()
+    initial_score = score.get_score()
+
+    # flyttar player ett steg till höger
+    move_player(player, 1, 0, grid, score, [])
+    assert score.get_score() == initial_score - 1, "Score should decrease by 1 per step"
+
+    move_player(player, 0, 1, grid, score, [])  # Flyttar ner
+    assert score.get_score() == initial_score - 2, "Score should decrease by 1 per step again"
+
+
+
+
+
+
+
 
 
 

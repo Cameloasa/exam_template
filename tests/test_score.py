@@ -29,3 +29,5 @@ def test_game_over():
 
     with pytest.raises(SystemExit):
         score.update_score(-2) #om vi försöker gå under 0
+
+
