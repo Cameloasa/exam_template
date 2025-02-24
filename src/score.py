@@ -2,8 +2,8 @@
 
 class Score:
 
-    def __init__(self):
-        self.value = 0
+    def __init__(self, start_value = 50 ):
+        self.value = start_value
 
     def get_score(self):
         return self.value
@@ -18,5 +18,5 @@ class Score:
 
     def __str__(self):
         """Visa spelvärlden och antal poäng."""
-        return self.value
+        return str(self.value)
 
