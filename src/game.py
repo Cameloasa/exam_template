@@ -14,9 +14,11 @@ def move_player(player, dx, dy, grid, score, inventory):
         maybe_item = grid.get(new_x, new_y)
         player.move(dx, dy)
 
+        score.update_score(-1) # Varje steg minskar poängen med 1 (The floor is lava!)
+
         if isinstance(maybe_item, Item):
-            inventory.append(maybe_item)  # Lägg till i inventory
             score.update_score(maybe_item.value)
+            inventory.append(maybe_item)  # Lägg till i inventory
             print(f"You found a {maybe_item.name}, +{maybe_item.value} points.")
             grid.clear(new_x, new_y)
 
