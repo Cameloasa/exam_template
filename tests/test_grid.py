@@ -2,6 +2,7 @@ from src.grid import Grid
 
 
 def test_make_walls():
+    """Testar funktionen make_walls"""
     grid = Grid()
     grid.make_walls()
 
