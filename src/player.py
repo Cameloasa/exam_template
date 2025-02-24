@@ -2,6 +2,7 @@ class Player:
     marker = "@"
 
     def __init__(self, x, y):
+        """Initialisera spelaren med en start position"""
         self.pos_x = x #horisontal
         self.pos_y = y #verical
 

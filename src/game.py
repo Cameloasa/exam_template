@@ -22,13 +22,32 @@ def move_player(player, dx, dy, grid, score):
 
 def main():
     """Huvudfunktion för spelet."""
-    player = Player(2, 1)
-    inventory = []
-    score = Score()
+    # skapa grid
     grid = Grid()
-    grid.set_player(player)
+    # skapa vägar
     grid.make_walls()
+    # randomise pickups
     randomize(grid)
+
+    # hämta mittenpositionen av grid
+    middle_x = grid.width // 2
+    middle_y = grid.height // 2
+
+    # om det finns en vägg, flytta spelaren neråt
+    if grid.get(middle_x, middle_y) == grid.wall:
+        middle_y += 1
+
+    #skapa player
+    player = Player(middle_x,middle_y)
+    # set player
+    grid.set_player(player)
+    # initiate score = 50
+    score = Score()
+    # initiate an empty list of pickups
+    inventory = []
+
+
+
 
     command = "a"
     # Loopa tills användaren trycker Q eller X.

@@ -38,6 +38,8 @@ def test_move_player_moves_correctly_vertical():
     # Flytta spelaren uppåt tillbaka
     move_player(player, 0, -1, grid, score)  # Flyttar vänster
     assert player.pos_x == 2 and player.pos_y == 2, "Player should be back at (2,2)"
+
+
 def test_pickups_item_update_score():
     """Testar att poängen uppdateras när spelaren plockar upp ett föremål"""
 
@@ -54,7 +56,7 @@ def test_pickups_item_update_score():
     #flyttar player till föremålet
     move_player(player,1,0,grid,score)
 
-    assert score.get_score() == 10, f"Expected score 10, got score {score.get_score()}"
+    assert score.get_score() == 60, f"Expected score 10, got score {score.get_score()}"
 
 def test_item_is_removed_after_pickups():
     """Testar om föremålet tas up från grid efter player picks up """
