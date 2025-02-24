@@ -5,7 +5,7 @@ from src.player import Player
 from src.score import Score
 
 
-def test_move_player_moves_correctly():
+def test_move_player_moves_correctly_horisontal():
     """Testar att spelaren rör sig korrekt och att poängen uppdateras."""
 
     ##initializera grid, player och score, set player
@@ -22,7 +22,22 @@ def test_move_player_moves_correctly():
     move_player(player, -1, 0, grid, score)  # Flyttar vänster
     assert player.pos_x == 2 and player.pos_y == 2, "Player should be back at (2,2)"
 
+def test_move_player_moves_correctly_vertical():
+    """Testar att spelaren rör sig korrekt och att poängen uppdateras."""
 
+    ##initializera grid, player och score, set player
+    player = Player(2,2)
+    grid = Grid()
+    grid.set_player(player)
+    score = Score()
+
+    # # Flytta spelaren nedåt
+    move_player(player, 0, 1, grid, score)  # Flyttar höger
+    assert player.pos_x == 2 and player.pos_y == 3, "Player should be at (2,3)"
+
+    # Flytta spelaren uppåt tillbaka
+    move_player(player, 0, -1, grid, score)  # Flyttar vänster
+    assert player.pos_x == 2 and player.pos_y == 2, "Player should be back at (2,2)"
 def test_pickups_item_update_score():
     """Testar att poängen uppdateras när spelaren plockar upp ett föremål"""
 
