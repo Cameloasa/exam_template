@@ -4,7 +4,7 @@ from src.pickups import pickups, randomize, Item
 from src.score import Score
 
 
-def move_player(player, dx, dy, grid, score):
+def move_player(player, dx, dy, grid, score, inventory):
     """Försöker flytta spelaren och uppdatera poäng om det behövs."""
 
     new_x = player.pos_x + dx
@@ -15,6 +15,7 @@ def move_player(player, dx, dy, grid, score):
         player.move(dx, dy)
 
         if isinstance(maybe_item, Item):
+            inventory.append(maybe_item)  # Lägg till i inventory
             score.update_score(maybe_item.value)
             print(f"You found a {maybe_item.name}, +{maybe_item.value} points.")
             grid.clear(new_x, new_y)
@@ -65,7 +66,16 @@ def main():
                  "d": (1, 0)}
         if command in moves:
             dx, dy = moves[command]
-            move_player(player, dx, dy, grid, score)
+            move_player(player, dx, dy, grid, score,inventory)
+
+        elif command == "i":
+            print("\n--- Inventory ---")
+            if inventory:
+                for item in inventory:
+                    print(f"- {item.name} ({item.symbol})")
+            else:
+                print("Your inventory is empty.")
+            print("-----------------")
 
     print(f"Thank you for playing! Your final score is: {score.get_score()}")
 
