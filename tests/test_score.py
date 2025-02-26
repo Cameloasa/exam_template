@@ -24,8 +24,8 @@ def test_update_score():
 
 def test_game_over():
     """Testar att spelet avslutas när poängen är 0 eller negativ."""
-    score = Score()
-    score.update_score(-49) # Blir 0 → Ska avsluta spelet
+    score = Score(start_value= 2)
+
 
     with pytest.raises(SystemExit):
         score.update_score(-2) #om vi försöker gå under 0

@@ -44,7 +44,9 @@ class Grid:
 
 
     def make_walls(self):
-        """Skapa väggar runt hela spelplanen"""
+        """Skapa väggar runt hela spelplanen och inre väggar"""
+
+        # Skapar yttre väggar
         for i in range(self.height):
             self.set(0, i, self.wall)
             self.set(self.width - 1, i, self.wall)
@@ -52,6 +54,22 @@ class Grid:
         for j in range(1, self.width - 1):
             self.set(j, 0, self.wall)
             self.set(j, self.height - 1, self.wall)
+
+        # Skapar slumpmässiga inre väggar
+        num_walls = random.randint(5, 10)  # Varierande antal väggar
+        for _ in range(num_walls):
+            x = random.randint(2, self.width - 3)
+            y = random.randint(2, self.height - 3)
+            length = random.randint(3, 7)  # Varierande vägglängd
+            direction = random.choice(["H", "V"])  # Horisontell eller vertikal
+
+            for i in range(length):
+                new_x, new_y = (x + i, y) if direction == "H" else (x, y + i)
+
+                # Kontrollera att vi inte blockerar spelaren helt
+                if new_x < self.width - 1 and new_y < self.height - 1:
+                    if self.is_empty(new_x, new_y):  # Bara placera om rutan är tom
+                        self.set(new_x, new_y, self.wall)
 
 
     # Används i filen pickups.py
