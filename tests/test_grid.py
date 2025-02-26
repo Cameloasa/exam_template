@@ -61,3 +61,12 @@ def test_player_not_blocked():
     )
 
     assert free_path, "The player is completely blocked by walls!"
+
+
+def test_place_traps():
+    """Testar att fällor placeras korrekt på kartan."""
+    grid = Grid()
+    grid.place_traps(num_traps=3)
+
+    trap_count = sum(row.count("X") for row in grid.data)  # Räknar antal "X"
+    assert trap_count == 3, f"Expected 3 traps, but found {trap_count}"

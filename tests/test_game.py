@@ -3,6 +3,7 @@ from src.grid import Grid
 from src.pickups import Item
 from src.player import Player
 from src.score import Score
+from src.traps import Trap
 
 
 def test_pickups_item_add_to_inventory_and_remove_from_grid():
@@ -43,6 +44,24 @@ def test_score_decrease_each_step():
 
     move_player(player, 0, 1, grid, score, [])  # Flyttar ner
     assert score.get_score() == initial_score - 2, "Score should decrease by 1 per step again"
+
+
+def test_trap_effect():
+    """Testar att spelaren förlorar poäng när de går på en fälla."""
+    grid = Grid()
+    player = Player(4, 4)
+    grid.set_player(player)
+    score = Score()
+
+    trap_x, trap_y = 5, 4  # Placera en fälla manuellt
+    trap = Trap()
+    grid.set(trap_x, trap_y, trap)  # Använd ett Trap-objekt, inte bara en symbol
+
+    initial_score = score.get_score()
+    move_player(player, 1, 0, grid, score, inventory=[])  # Spelaren går på fällan
+
+    expected_score = initial_score - 10
+    assert score.get_score() == expected_score, f"Trap effect failed! Expected {expected_score}, but got {score.get_score()}"
 
 
 

@@ -1,5 +1,8 @@
 import random
 
+from src.traps import Trap
+
+
 class Grid:
     """Representerar spelplanen. Du kan ändra standardstorleken och tecknen för olika rutor. """
     width = 36
@@ -84,4 +87,11 @@ class Grid:
     def is_empty(self, x, y):
         """Returnerar True om det inte finns något på aktuell ruta"""
         return self.get(x, y) == self.empty
+
+    def place_traps(self, num_traps=3):
+        """Slumpar och placerar ut fällor på kartan."""
+        for _ in range(num_traps):
+            x, y = random.randint(1, self.width - 2), random.randint(1, self.height - 2)
+            if self.is_empty(x, y):  # Undvik att lägga på väggar eller pickups
+                self.set(x, y, Trap().symbol)  # Använder symbolen "X"
 
