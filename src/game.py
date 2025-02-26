@@ -33,8 +33,13 @@ def main():
     """Huvudfunktion för spelet."""
     # skapa grid
     grid = Grid()
+
     # skapa vägar
     grid.make_walls()
+
+    # placera fällor
+    grid.place_traps()
+
     # randomise pickups
     randomize(grid)
 
@@ -48,10 +53,13 @@ def main():
 
     #skapa player
     player = Player(middle_x,middle_y)
+
     # set player
     grid.set_player(player)
+
     # initiate score = 50
     score = Score()
+
     # initiate an empty list of pickups
     inventory = []
 
