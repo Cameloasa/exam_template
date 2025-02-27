@@ -1,4 +1,5 @@
 
+
 class Item:
     """Representerar saker man kan plocka upp."""
     def __init__(self, name, value=10, symbol="?"):
@@ -31,3 +32,14 @@ def randomize(grid):
                 grid.set(x, y, item)
                 break  # avbryt while-loopen, fortsätt med nästa varv i for-loopen
 
+
+def fertile_soil(grid, moves_count):
+    """Efter varje 25:e drag skapas en ny frukt/grönsak på kartan."""
+    if moves_count % 25 == 0:
+        new_item = pickups[moves_count // 25 % len(pickups)]  # väljer en random pickup från Item
+        while True:
+            x, y = grid.get_random_x(), grid.get_random_y()
+            if grid.is_empty(x, y):
+                grid.set(x, y, new_item)
+                print(f"A new {new_item.name} has grown on the map!")
+                break  # avbryt while-loopen, fortsätt med nästa varv i for-loopen
