@@ -16,7 +16,7 @@ def move_player(player, dx, dy, grid, score, inventory):
         player.move(dx, dy)
 
         if isinstance(maybe_item, Trap):
-            maybe_item.apply_effect(score)  # Dra av poäng direkt fälla
+            maybe_item.apply_effect_traps(score)  # Dra av poäng direkt fälla
             print("Oh no! You stepped on a trap! -10 points.")
         else:
             score.update_score(-1)  # Minskar bara poängen om det inte är en fälla

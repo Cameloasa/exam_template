@@ -8,8 +8,8 @@ class Trap:
     def __str__(self):
         return self.symbol
 
-    def apply_effect(self, score):
-        """Applicerar fällans effekt på spelaren (drar av poäng)."""
+    def apply_effect_traps(self, score):
+        """Applicerar fällans effekt på spelaren (drar av 10 poäng)."""
         score.update_score(self.value)
 
 

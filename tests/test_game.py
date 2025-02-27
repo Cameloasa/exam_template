@@ -17,7 +17,7 @@ def test_pickups_item_add_to_inventory_and_remove_from_grid():
 
 
     #Placera föremålet på kartan
-    item = Item("apple",20,"A")
+    item = Item("apple",20,"?")
     grid.set(3,2, item)
 
     #flyttar player till föremålet

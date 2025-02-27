@@ -10,14 +10,14 @@ class Item:
         return self.symbol
 
 
-pickups = [Item("carrot", 20, "C"),
-           Item("apple", 20, "A"),
-           Item("strawberry", 20, "S"),
-           Item("cherry", 20, "H"),
-           Item("watermelon", 20, "W"),
-           Item("radish", 20, "R"),
-           Item("cucumber", 20, "U"),
-           Item("meatball", 20, "M")]
+pickups = [Item("carrot", 20, "?"),
+           Item("apple", 20, "?"),
+           Item("strawberry", 20, "?"),
+           Item("cherry", 20, "?"),
+           Item("watermelon", 20, "?"),
+           Item("radish", 20, "?"),
+           Item("cucumber", 20, "?"),
+           Item("meatball", 20, "?")]
 
 
 
