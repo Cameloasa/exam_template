@@ -1,6 +1,6 @@
 from src.grid import Grid
 from src.player import Player
-from src.pickups import pickups, randomize, Item
+from src.pickups import pickups, randomize, Item, fertile_soil
 from src.score import Score
 from src.traps import Trap
 
@@ -63,7 +63,8 @@ def main():
     # initiate an empty list of pickups
     inventory = []
 
-
+    #start the count for moves
+    moves_count = 0
 
 
     command = "a"
@@ -80,9 +81,18 @@ def main():
                  "a": (-1, 0),
                  "s": (0, 1),
                  "d": (1, 0)}
+
         if command in moves:
             dx, dy = moves[command]
             move_player(player, dx, dy, grid, score,inventory)
+
+            #TODO skriva ut hur många steg player ta och kontrollera inventory
+            # add moves count
+            moves_count += 1
+
+            if moves_count % 25 == 0:
+                fertile_soil(grid, moves_count)
+                print("A new crop has grown on the map!")
 
         elif command == "i":
             print("\n--- Inventory ---")
