@@ -58,22 +58,12 @@ class Grid:
             self.set(j, 0, self.wall)
             self.set(j, self.height - 1, self.wall)
 
-        # Skapar slumpmässiga inre väggar
-        num_walls = random.randint(5, 10)  # Varierande antal väggar
-        for _ in range(num_walls):
-            x = random.randint(2, self.width - 3)
-            y = random.randint(2, self.height - 3)
-            length = random.randint(3, 7)  # Varierande vägglängd
-            direction = random.choice(["H", "V"])  # Horisontell eller vertikal
-
-            for i in range(length):
-                new_x, new_y = (x + i, y) if direction == "H" else (x, y + i)
-
-                # Kontrollera att vi inte blockerar spelaren helt
-                if new_x < self.width - 1 and new_y < self.height - 1:
-                    if self.is_empty(new_x, new_y):  # Bara placera om rutan är tom
-                        self.set(new_x, new_y, self.wall)
-
+        # Skapar fasta inre väggar (exempel på symmetriska väggar)
+        for x in range(3, self.width - 3, 4):  # Väggrader var fjärde kolumn
+            for y in range(3, self.height - 3, 4):  # Var fjärde rad
+                self.set(x, y, self.wall)
+                self.set(x + 1, y, self.wall)  # Gör väggen bredare
+                self.set(x, y + 1, self.wall)
 
     # Används i filen pickups.py
     def get_random_x(self):

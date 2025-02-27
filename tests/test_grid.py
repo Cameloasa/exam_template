@@ -31,37 +31,24 @@ def test_internal_walls():
     grid = Grid()
     grid.make_walls()
 
-    internal_wall_found = False
-
-    for y in range(1, grid.height - 1):
-        for x in range(1, grid.width - 1):
-            if grid.get(x, y) == grid.wall:
-                internal_wall_found = True
-                break
-        if internal_wall_found:
-            break
-
-    assert internal_wall_found, "No internal walls were created."
+    # Kontrollera om det finns minst en inre vägg
+    assert any(grid.get(x, y) == grid.wall for x in range(1, grid.width - 1)
+                                          for y in range(1, grid.height - 1)), "No internal walls were created."
 
 
 def test_player_not_blocked():
     """Testar att spelaren inte är instängd av väggar."""
     grid = Grid()
-    player = Player(5, 5)
-    grid.set_player(player)
-    grid.make_walls()
+    grid.make_walls()  # Först skapar vi väggarna
 
-    player_x, player_y = grid.player.pos_x, grid.player.pos_y
+    player = Player(5, 5)
+    grid.set_player(player)  # Sedan sätter vi spelaren på kartan
+
+    px, py = player.pos_x, player.pos_y
 
     # Kontrollera om det finns minst en ledig väg runt spelaren
-    free_path = any(
-        grid.is_empty(player_x + dx, player_y + dy)
-        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        if 0 < player_x + dx < grid.width - 1 and 0 < player_y + dy < grid.height - 1
-    )
-
-    assert free_path, "The player is completely blocked by walls!"
-
+    assert any(grid.is_empty(px + dx, py + dy) for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]), \
+        "The player is completely blocked by walls!"
 
 def test_place_traps():
     """Testar att fällor placeras korrekt på kartan."""
