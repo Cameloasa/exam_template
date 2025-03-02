@@ -72,6 +72,7 @@ def main():
     while not command.casefold() in ["q", "x"]:
         print("--------------------------------------")
         print(f"You have {score.get_score()} points.")
+        print(f"Total moves: {moves_count}")
         print(grid)
 
         command = input("Use WASD to move, Q/X to quit. ")
@@ -86,13 +87,11 @@ def main():
             dx, dy = moves[command]
             move_player(player, dx, dy, grid, score,inventory)
 
-            #TODO skriva ut hur många steg player ta och kontrollera inventory
-            # add moves count
             moves_count += 1
 
             if moves_count % 25 == 0:
                 fertile_soil(grid, moves_count)
-                print("A new crop has grown on the map!")
+                print(f"A new crop has grown on the map!(Move {moves_count})")
 
         elif command == "i":
             print("\n--- Inventory ---")
